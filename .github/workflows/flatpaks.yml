@@ -51,7 +51,7 @@ jobs:
         uses: andyholmes/flatter@main
         with:
           files: |
-            io.github.com.fabiangreffrath.woof/io.github.com.fabiangreffrath.woof.yml
+            io.github.fabiangreffrath.woof/io.github.fabiangreffrath.woof.yml
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: false
