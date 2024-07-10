@@ -1,0 +1,47 @@
+id: io.github.fabiangreffrath.woof
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: woof
+modules:
+  - name: xmp
+    buildsystem: cmake-ninja
+    builddir: true
+    sources:
+      - type: git
+        url: https://github.com/libxmp/libxmp.git
+        tag: libxmp-4.6.0
+  - name: fluidsynth
+    buildsystem: cmake-ninja
+    builddir: true
+    sources:
+      - type: git
+        url: https://github.com/FluidSynth/fluidsynth.git
+        tag: v2.3.5
+  - name: woof
+    buildsystem: cmake-ninja
+    builddir: true
+    sources:
+      - type: git
+        url: https://github.com/fabiangreffrath/woof
+        tag: woof_14.5.0
+rename-icon: "woof"
+post-install:
+  - "mv /app/share/icons/hicolor/128x128/apps/woof-setup.png /app/share/icons/hicolor/128x128/apps/io.github.fabiangreffrath.woof-setup.png"
+  - "mv /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
+  - "sed -i 's/Exec=woof-setup/Exec=woof-setup/' /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
+  - "sed -i 's/Icon=woof-setup/Icon=io.github.fabiangreffrath.woof-setup/' /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
+finish-args:
+  # Wayland access
+  - --socket=wayland
+  # X11 + XShm fallback access
+  - --share=ipc
+  - --socket=fallback-x11
+  # GPU acceleration
+  - --device=dri
+  # Needs to talk to the network
+  - --share=network
+  # For loading wads
+  - --filesystem=home:ro
+  # Audio
+  - --socket=pulseaudio
