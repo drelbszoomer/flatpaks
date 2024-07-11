@@ -29,7 +29,6 @@ rename-icon: "woof"
 post-install:
   - "mv /app/share/icons/hicolor/128x128/apps/woof-setup.png /app/share/icons/hicolor/128x128/apps/io.github.fabiangreffrath.woof-setup.png"
   - "mv /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
-  - "sed -i 's/Exec=woof-setup/Exec=woof-setup/' /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
   - "sed -i 's/Icon=woof-setup/Icon=io.github.fabiangreffrath.woof-setup/' /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
 finish-args:
   # Wayland access
@@ -42,6 +41,6 @@ finish-args:
   # Needs to talk to the network
   - --share=network
   # For loading wads
-  - --filesystem=home:ro
+  - --filesystem=xdg-data
   # Audio
   - --socket=pulseaudio
