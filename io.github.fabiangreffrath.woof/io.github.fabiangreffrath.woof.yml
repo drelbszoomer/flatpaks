@@ -25,12 +25,6 @@ modules:
       - type: git
         url: https://github.com/fabiangreffrath/woof
         tag: woof_14.5.0
-rename-icon: "woof"
-rename-icon: "woof-setup"
-rename-desktop-file: "io.github.fabiangreffrath.woof-setup"
-post-install:
-  - "mv /app/share/icons/hicolor/128x128/apps/woof-setup.png /app/share/icons/hicolor/128x128/apps/io.github.fabiangreffrath.woof-setup.png"
-  - "sed -i 's/Icon=woof-setup/Icon=io.github.fabiangreffrath.woof-setup/' /app/share/applications/io.github.fabiangreffrath.woof-setup.desktop"
 finish-args:
   # Wayland access
   - --socket=wayland
