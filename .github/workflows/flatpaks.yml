@@ -54,7 +54,7 @@ jobs:
             io.github.fabiangreffrath.woof/io.github.fabiangreffrath.woof.yml
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
-          upload-pages-artifact: ${{ matrix.arch != 'aarch64' }}
+          upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
           upload-pages-includes: |
             CNAME
             default.css
