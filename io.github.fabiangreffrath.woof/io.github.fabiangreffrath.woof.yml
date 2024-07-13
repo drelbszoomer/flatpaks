@@ -25,6 +25,8 @@ modules:
       - type: git
         url: https://github.com/fabiangreffrath/woof
         tag: woof_14.5.0
+rename-icon: "woof"
+rename-icon: "woof-setup"
 finish-args:
   # Wayland access
   - --socket=wayland
